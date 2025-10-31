@@ -1,0 +1,14 @@
+# Core dependencies for sentiment analysis
+vaderSentiment==3.3.2
+pandas>=2.0.0
+numpy>=1.21.0
+
+# Development and testing dependencies
+pytest>=7.0.0
+pytest-cov>=4.0.0
+black>=23.0.0
+flake8>=6.0.0
+
+# Additional utilities
+chardet>=5.0.0  # For encoding detection
+psutil>=5.8.0   # For memory and system monitoring
