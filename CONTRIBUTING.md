@@ -241,8 +241,6 @@ Current focus areas:
 ## 📚 Resources
 
 - [Project Documentation](README.md)
-- [Technical Documentation](docs/TECHNICAL_DOCUMENTATION.md)
-- [Deployment Guide](docs/DEPLOYMENT_GUIDE.md)
 - [Python Style Guide (PEP 8)](https://www.python.org/dev/peps/pep-0008/)
 
 ## 🙏 Recognition

@@ -413,25 +413,25 @@ class SentimentValidator:
             
             if neutral_confused_with_positive > len(misclassifications) * 0.3:
                 recommendations.append(
-                    "- Ajuster les seuils : trop de sentiments neutres classés comme positifs"
+                    "- Adjust thresholds: too many neutral sentiments classified as positive"
                 )
             if neutral_confused_with_negative > len(misclassifications) * 0.3:
                 recommendations.append(
-                    "- Ajuster les seuils : trop de sentiments neutres classés comme négatifs"
+                    "- Adjust thresholds: too many neutral sentiments classified as negative"
                 )
         
         # General recommendations
         if metrics["accuracy"] < 0.85:
             recommendations.append(
-                "- Envisager l'utilisation d'un modèle ML pré-entraîné pour le français (CamemBERT, FlauBERT)"
+                "- Consider using a pre-trained ML model for French (CamemBERT, FlauBERT)"
             )
             recommendations.append(
-                "- Étendre le dictionnaire de mots français avec des termes spécifiques au domaine"
+                "- Extend the French word dictionary with domain-specific terms"
             )
         
         if not recommendations:
             recommendations.append(
-                "- Le modèle performe bien. Continuer le monitoring sur de nouvelles données."
+                "- Model performs well. Continue monitoring on new data."
             )
         
         return "\n".join(recommendations)

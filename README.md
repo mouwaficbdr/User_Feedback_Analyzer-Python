@@ -1,4 +1,3 @@
-
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 [![Tests](https://img.shields.io/badge/tests-164%2B-brightgreen.svg)](tests/)
 [![Coverage](https://img.shields.io/badge/coverage-90%25-brightgreen.svg)](tests/)
@@ -133,7 +132,7 @@ The input file must be in JSON format with the following structure:
     "review_text": "Excellent produit, je le recommande vivement !"
   },
   {
-    "review_id": "REV002", 
+    "review_id": "REV002",
     "review_text": "Service client décevant."
   }
 ]
@@ -155,9 +154,9 @@ The input file must be in JSON format with the following structure:
   "analysis_summary": {
     "total_reviews": 50,
     "sentiment_distribution": {
-      "positive": {"count": 12, "percentage": 24.0},
-      "negative": {"count": 9, "percentage": 18.0},
-      "neutral": {"count": 29, "percentage": 58.0}
+      "positive": { "count": 12, "percentage": 24.0 },
+      "negative": { "count": 9, "percentage": 18.0 },
+      "neutral": { "count": 29, "percentage": 58.0 }
     },
     "processing_info": {
       "timestamp": "2025-10-31T10:00:00Z",
@@ -230,9 +229,8 @@ UserFeedbackAnalyzer-Python/
 │   ├── config/            # Configuration management
 │   └── utils/             # Utilities
 ├── tests/                 # Unit and integration tests
-├── docs/                  # Documentation
 ├── main.py               # Entry point
-├── config.json           # Default configuration
+├── config.example.json   # Example configuration
 └── requirements.txt      # Dependencies
 ```
 
@@ -389,7 +387,7 @@ python main.py reviews.json --verbose
 For questions or issues:
 
 - Open an issue on GitHub
-- Check the documentation in `docs/`
+- Check the documentation in this README
 - Use `--verbose` mode for detailed diagnostics
 
 ---
