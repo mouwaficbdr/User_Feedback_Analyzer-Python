@@ -1,8 +1,7 @@
 {
   "sentiment_thresholds": {
-    "positive": 0.28,
-    "negative": -0.28,
-    "comment": "Seuils optimisés pour 91.07% accuracy avec analyseur Hybrid"
+    "positive": 0.05,
+    "negative": -0.05
   },
   "output": {
     "summary_format": "json",

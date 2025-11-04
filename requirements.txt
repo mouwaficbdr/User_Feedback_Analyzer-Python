@@ -12,3 +12,10 @@ flake8>=6.0.0
 # Additional utilities
 chardet>=5.0.0  # For encoding detection
 psutil>=5.8.0   # For memory and system monitoring
+
+# Machine Learning dependencies (optional, for ML-based analyzer)
+transformers>=4.30.0  # HuggingFace transformers for ML models
+torch>=2.0.0  # PyTorch for model inference
+scikit-learn>=1.3.0  # For validation metrics
+matplotlib>=3.7.0  # For visualization
+seaborn>=0.12.0  # For advanced visualizations

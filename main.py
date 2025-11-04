@@ -25,6 +25,8 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), "src"))
 
 from src.engine import SentimentAnalysisEngine
 from src.utils.logger import setup_logger
+from src.validation.validator import SentimentValidator
+from src.optimization.threshold_optimizer import ThresholdOptimizer
 
 
 def create_argument_parser() -> argparse.ArgumentParser:
@@ -74,6 +76,32 @@ The program will generate:
         "--validate-only",
         action="store_true",
         help="Only validate input file without processing",
+    )
+
+    parser.add_argument(
+        "--validate-quality",
+        metavar="VALIDATION_FILE",
+        help="Validate analyzer quality using annotated dataset",
+    )
+
+    parser.add_argument(
+        "--optimize-thresholds",
+        metavar="VALIDATION_FILE",
+        help="Optimize classification thresholds using validation dataset",
+    )
+
+    parser.add_argument(
+        "--metric",
+        default="f1_score",
+        choices=["f1_score", "accuracy", "balanced_accuracy"],
+        help="Metric to optimize (default: f1_score)",
+    )
+
+    parser.add_argument(
+        "--analyzer",
+        default="vader",
+        choices=["vader", "ml", "hybrid"],
+        help="Sentiment analyzer to use (default: vader)",
     )
 
     parser.add_argument(
@@ -159,11 +187,31 @@ def main() -> int:
                 logger.error(error)
             return 1
 
-        # Initialize engine
+        # Initialize engine with selected analyzer
         if not args.quiet:
             print("Initializing Sentiment Analysis Engine...")
 
         engine = SentimentAnalysisEngine(config_path=args.config)
+        
+        # Switch analyzer if requested
+        if args.analyzer == "ml":
+            from src.analysis.ml_sentiment_analyzer import MLSentimentAnalyzer
+            if not args.quiet:
+                print("Using ML-based sentiment analyzer...")
+            engine.sentiment_analyzer = MLSentimentAnalyzer(
+                positive_threshold=engine.config.get_positive_threshold(),
+                negative_threshold=engine.config.get_negative_threshold(),
+                batch_size=engine.config.get_batch_size(),
+            )
+        elif args.analyzer == "hybrid":
+            from src.analysis.ml_sentiment_analyzer import HybridSentimentAnalyzer
+            if not args.quiet:
+                print("Using hybrid sentiment analyzer (VADER + ML)...")
+            engine.sentiment_analyzer = HybridSentimentAnalyzer(
+                positive_threshold=engine.config.get_positive_threshold(),
+                negative_threshold=engine.config.get_negative_threshold(),
+                batch_size=engine.config.get_batch_size(),
+            )
 
         # Validate input file
         if not args.quiet:
@@ -182,6 +230,59 @@ def main() -> int:
         if args.validate_only:
             if not args.quiet:
                 print("Input file validation completed successfully.")
+            return 0
+        
+        # If validate-quality mode, run quality validation
+        if args.validate_quality:
+            if not args.quiet:
+                print(f"Validating analyzer quality using {args.validate_quality}...")
+            
+            validator = SentimentValidator(engine)
+            validation_result = validator.validate_analyzer(
+                args.validate_quality, args.output_dir
+            )
+            
+            if not args.quiet:
+                print("\n" + "=" * 50)
+                print("QUALITY VALIDATION COMPLETED")
+                print("=" * 50)
+                print()
+                metrics = validation_result["metrics"]
+                print(f"Accuracy: {metrics['accuracy']:.2%}")
+                print(f"Precision: {metrics['precision']:.2%}")
+                print(f"Recall: {metrics['recall']:.2%}")
+                print(f"F1-Score: {metrics['f1_score']:.2%}")
+                print()
+                print(f"Validation report: {validation_result['report_path']}")
+            
+            return 0
+        
+        # If optimize-thresholds mode, run threshold optimization
+        if args.optimize_thresholds:
+            if not args.quiet:
+                print(f"Optimizing thresholds using {args.optimize_thresholds}...")
+                print(f"Metric to optimize: {args.metric}")
+                print("This may take several minutes...")
+            
+            optimizer = ThresholdOptimizer(engine)
+            optimization_result = optimizer.find_optimal_thresholds(
+                args.optimize_thresholds,
+                metric=args.metric,
+                output_dir=args.output_dir,
+            )
+            
+            if not args.quiet:
+                print("\n" + "=" * 50)
+                print("THRESHOLD OPTIMIZATION COMPLETED")
+                print("=" * 50)
+                print()
+                best = optimization_result["best_thresholds"]
+                print(f"Optimal Positive Threshold: {best['positive']:.4f}")
+                print(f"Optimal Negative Threshold: {best['negative']:.4f}")
+                print(f"Best {args.metric}: {optimization_result['best_score']:.4f}")
+                print()
+                print(f"Optimization report: {optimization_result['report_path']}")
+            
             return 0
 
         # Create output directory if it doesn't exist

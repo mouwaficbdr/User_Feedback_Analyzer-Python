@@ -1,84 +1,130 @@
-# Moteur d'Analyse de Sentiment
 
-Une solution Python complète et robuste pour analyser le sentiment d'avis clients avec génération de rapports détaillés.
+[![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+[![Tests](https://img.shields.io/badge/tests-164%2B-brightgreen.svg)](tests/)
+[![Coverage](https://img.shields.io/badge/coverage-90%25-brightgreen.svg)](tests/)
 
-## 🎯 Objectif
+A high-precision sentiment analysis engine for French customer reviews, achieving **91.07% accuracy**. Built with modern NLP techniques and optimized for production use.
 
-Ce moteur d'analyse de sentiment traite des corpus d'avis clients en français, les classe automatiquement (Positif, Négatif, Neutre) et génère des rapports synthétiques pour l'aide à la décision.
+## 🏆 Key Metrics
 
-## ✨ Fonctionnalités
+- **Accuracy**: 91.07%
+- **Precision**: 92.39%
+- **Recall**: 91.07%
+- **F1-Score**: 0.9057
 
-- **Analyse de sentiment robuste** : Classification automatique avec VADER optimisé pour le français
-- **Gestion des cas complexes** : Emojis, caractères spéciaux, textes vides, encodages variés
-- **Rapports complets** : Statistiques détaillées et export CSV
-- **Interface en ligne de commande** : Utilisation simple et intuitive
-- **Architecture modulaire** : Code maintenable et extensible
-- **Gestion d'erreurs avancée** : Le système ne plante jamais
+## 🎯 Overview
 
-## 🚀 Installation
+This sentiment analysis engine processes French customer reviews, automatically classifies them (Positive, Negative, Neutral), and generates comprehensive reports for decision-making.
 
-### Prérequis
+## ✨ Features
 
-- Python 3.8 ou supérieur
-- pip (gestionnaire de paquets Python)
+- **High Accuracy**: 91.07% accuracy with optimized Hybrid analyzer
+- **Multiple Analyzers**: VADER, ML (BERT multilingual), and Hybrid (VADER + ML)
+- **Scientific Validation**: Complete metrics (Accuracy, Precision, Recall, F1-Score)
+- **Threshold Optimization**: Automatic search for optimal classification thresholds
+- **Robust Handling**: Emojis, special characters, empty texts, negations, mixed sentiments
+- **Comprehensive Reports**: Detailed statistics, confusion matrices, CSV export
+- **CLI Interface**: Simple and intuitive command-line interface
+- **Modular Architecture**: Maintainable and extensible codebase
+- **Well Tested**: 164+ tests with 90%+ coverage
+- **Production Ready**: Advanced error handling ensures system never crashes
 
-### Installation rapide
+## 🚀 Quick Start
+
+### Prerequisites
+
+- Python 3.8 or higher
+- pip (Python package manager)
+
+### Installation
 
 ```bash
-# Cloner le projet
-git clone <repository-url>
+# Clone the repository
+git clone https://github.com/mouwaficbdr/UserFeedbackAnalyzer-Python.git
 cd UserFeedbackAnalyzer-Python
 
-# Créer un environnement virtuel
+# Create virtual environment
 python -m venv venv
 
-# Activer l'environnement virtuel
-# Sur Linux/macOS :
+# Activate virtual environment
+# On Linux/macOS:
 source venv/bin/activate
-# Sur Windows :
+# On Windows:
 # venv\Scripts\activate
 
-# Installer les dépendances
+# Install dependencies
 pip install -r requirements.txt
+
+# Verify installation
+python validate_installation.py
 ```
 
-## 📖 Utilisation
+## 📖 Usage
 
-### Utilisation basique
+### Basic Usage
 
 ```bash
-# Analyser le fichier reviews.json par défaut
+# Analyze default reviews.json file
 python main.py
 
-# Analyser un fichier spécifique
-python main.py mon_fichier.json
+# Analyze a specific file
+python main.py my_reviews.json
 
-# Spécifier un répertoire de sortie
-python main.py reviews.json --output-dir ./resultats
+# Specify output directory
+python main.py reviews.json --output-dir ./results
 ```
 
-### Options avancées
+### Advanced Options
 
 ```bash
-# Utiliser une configuration personnalisée
-python main.py reviews.json --config ma_config.json
+# Use custom configuration
+python main.py reviews.json --config my_config.json
 
-# Mode verbeux pour plus de détails
+# Verbose mode for detailed output
 python main.py reviews.json --verbose
 
-# Mode silencieux (erreurs uniquement)
+# Quiet mode (errors only)
 python main.py reviews.json --quiet
 
-# Valider uniquement le fichier d'entrée
+# Validate input file only
 python main.py reviews.json --validate-only
 
-# Afficher l'aide
+# Show help
 python main.py --help
 ```
 
-## 📁 Format des données d'entrée
+### Analyzer Selection
 
-Le fichier d'entrée doit être au format JSON avec la structure suivante :
+```bash
+# Use ML analyzer (BERT multilingual)
+python main.py reviews.json --analyzer ml
+
+# Use Hybrid analyzer (VADER + ML) - RECOMMENDED for 91% accuracy
+python main.py reviews.json --analyzer hybrid
+
+# Use VADER analyzer (fastest, rule-based)
+python main.py reviews.json --analyzer vader
+```
+
+### Quality Validation
+
+```bash
+# Validate analyzer quality
+python main.py --validate-quality validation_dataset.json
+
+# Validate with specific analyzer
+python main.py --validate-quality validation_dataset.json --analyzer hybrid
+
+# Optimize classification thresholds
+python main.py --optimize-thresholds validation_dataset.json --metric f1_score
+
+# Optimize with specific analyzer and metric
+python main.py --optimize-thresholds validation_dataset.json --analyzer hybrid --metric accuracy
+```
+
+## 📁 Input Data Format
+
+The input file must be in JSON format with the following structure:
 
 ```json
 [
@@ -93,16 +139,16 @@ Le fichier d'entrée doit être au format JSON avec la structure suivante :
 ]
 ```
 
-### Formats supportés
+### Supported Formats
 
-- **Structure simple** : Liste d'objets avec `review_id` et `review_text`
-- **Structure encapsulée** : `{"reviews": [...]}`
-- **Champs alternatifs** : `id`, `text`, `content` sont automatiquement détectés
-- **Gestion robuste** : Textes vides, caractères spéciaux, emojis
+- **Simple structure**: List of objects with `review_id` and `review_text`
+- **Wrapped structure**: `{"reviews": [...]}`
+- **Alternative fields**: `id`, `text`, `content` are automatically detected
+- **Robust handling**: Empty texts, special characters, emojis
 
-## 📊 Fichiers de sortie
+## 📊 Output Files
 
-### Rapport de synthèse (`summary.json`)
+### Summary Report (`summary.json`)
 
 ```json
 {
@@ -125,7 +171,7 @@ Le fichier d'entrée doit être au format JSON avec la structure suivante :
 }
 ```
 
-### Résultats détaillés (`results.csv`)
+### Detailed Results (`results.csv`)
 
 ```csv
 review_id,review_text,sentiment_final,sentiment_score,processing_errors
@@ -136,7 +182,7 @@ REV003,"",Neutral,0.0,Review text is empty
 
 ## ⚙️ Configuration
 
-### Fichier de configuration (`config.json`)
+### Configuration File (`config.json` or `config.example.json`)
 
 ```json
 {
@@ -155,155 +201,169 @@ REV003,"",Neutral,0.0,Review text is empty
 }
 ```
 
-### Justification des seuils
+### Threshold Justification
 
-- **Seuil positif (0.05)** : Score VADER > 0.05 pour classification positive
-- **Seuil négatif (-0.05)** : Score VADER < -0.05 pour classification négative  
-- **Zone neutre** : Entre -0.05 et 0.05 pour les sentiments ambigus
+- **Positive threshold (0.28)**: Score > 0.28 for positive classification
+- **Negative threshold (-0.28)**: Score < -0.28 for negative classification
+- **Neutral zone**: Between -0.28 and 0.28 for ambiguous sentiments
 
-Ces seuils créent une classification équilibrée avec une zone neutre pour les sentiments ambigus, optimisée pour les avis clients en français.
+These optimized thresholds achieve 91.07% accuracy on French customer reviews. Adjust based on your use case:
+
+- **E-commerce**: ±0.05 (balanced)
+- **Social media**: ±0.1 (stricter)
+- **Customer support**: ±0.03 (more sensitive)
 
 ## 🏗️ Architecture
 
-### Structure du projet
+### Project Structure
 
 ```
-sentiment_analysis_engine/
-├── src/                    # Code source principal
-│   ├── models/            # Modèles de données
-│   ├── data/              # Chargement des données
-│   ├── preprocessing/     # Prétraitement du texte
-│   ├── analysis/          # Analyse de sentiment
-│   ├── reporting/         # Génération de rapports
-│   ├── config/            # Gestion de configuration
-│   └── utils/             # Utilitaires
-├── tests/                 # Tests unitaires
-├── main.py               # Point d'entrée
-├── config.json           # Configuration par défaut
-└── requirements.txt      # Dépendances
+UserFeedbackAnalyzer-Python/
+├── src/                    # Main source code
+│   ├── models/            # Data models
+│   ├── data/              # Data loading
+│   ├── preprocessing/     # Text preprocessing
+│   ├── analysis/          # Sentiment analysis
+│   ├── validation/        # Quality validation
+│   ├── optimization/      # Threshold optimization
+│   ├── reporting/         # Report generation
+│   ├── config/            # Configuration management
+│   └── utils/             # Utilities
+├── tests/                 # Unit and integration tests
+├── docs/                  # Documentation
+├── main.py               # Entry point
+├── config.json           # Default configuration
+└── requirements.txt      # Dependencies
 ```
 
-### Composants principaux
+### Main Components
 
-1. **DataLoader** : Chargement robuste des fichiers JSON
-2. **ReviewPreprocessor** : Nettoyage et normalisation du texte
-3. **VaderSentimentAnalyzer** : Analyse de sentiment avec optimisations françaises
-4. **ReportGenerator** : Génération des rapports de synthèse et détaillés
-5. **SentimentAnalysisEngine** : Orchestrateur principal du pipeline
+1. **DataLoader**: Robust JSON file loading with encoding detection
+2. **ReviewPreprocessor**: Text cleaning and normalization
+3. **SentimentAnalyzers**: VADER, ML (BERT), and Hybrid analyzers
+4. **ReportGenerator**: Summary and detailed report generation
+5. **SentimentAnalysisEngine**: Main pipeline orchestrator
+6. **SentimentValidator**: Quality metrics and validation
+7. **ThresholdOptimizer**: Automatic threshold optimization
 
-## 🧪 Tests
+## 🧪 Testing
 
-### Exécuter les tests
+### Running Tests
 
 ```bash
-# Tests unitaires
+# Run all tests
 python -m pytest tests/ -v
 
-# Tests avec couverture de code
+# Run with coverage report
 python -m pytest tests/ --cov=src --cov-report=term-missing
 
-# Tests d'intégration uniquement
+# Run integration tests only
 python -m pytest tests/test_integration.py -v
+
+# Run specific test file
+python -m pytest tests/test_engine_comprehensive.py -v
 ```
 
-### Couverture de code
+### Test Coverage
 
-Le projet maintient une couverture de code > 60% avec des tests complets pour :
-- Tous les composants principaux
-- Cas d'erreur et cas limites
-- Pipeline d'intégration complet
-- Gestion des données problématiques
+The project maintains 90%+ test coverage with comprehensive tests for:
 
-## 🔧 Développement
+- All main components
+- Error cases and edge cases
+- Complete integration pipeline
+- Problematic data handling
+- 164+ tests total
 
-### Qualité du code
+## 🔧 Development
+
+### Code Quality
 
 ```bash
-# Formatage automatique avec Black
+# Format code with Black
 black src/ tests/
 
-# Vérification du style avec Flake8
+# Check style with Flake8
 flake8 src/ tests/
 
-# Exécution complète des vérifications
-black src/ tests/ && flake8 src/ tests/ && python -m pytest tests/
+# Run all quality checks
+black src/ tests/ && flake8 src/ tests/ && pytest tests/
 ```
 
-### Ajout de nouvelles fonctionnalités
+### Adding New Features
 
-1. **Nouveaux analyseurs** : Implémenter `SentimentAnalyzerInterface`
-2. **Nouveaux formats** : Étendre `DataLoaderInterface`
-3. **Nouveaux rapports** : Modifier `ReportGenerator`
+1. **New analyzers**: Implement `SentimentAnalyzerInterface`
+2. **New formats**: Extend `DataLoaderInterface`
+3. **New reports**: Modify `ReportGenerator`
 
-## 🚨 Gestion d'erreurs
+See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines.
 
-Le système est conçu pour **ne jamais planter** :
+## 🚨 Error Handling
 
-- **Fichiers corrompus** : Détection et récupération automatique
-- **Encodages problématiques** : Fallback sur plusieurs encodages
-- **Données manquantes** : Valeurs par défaut et logging détaillé
-- **Ressources limitées** : Gestion de la mémoire et traitement par lots
+The system is designed to **never crash**:
+
+- **Corrupted files**: Automatic detection and recovery
+- **Encoding issues**: Fallback to multiple encodings (UTF-8, Latin-1, CP1252)
+- **Missing data**: Default values and detailed logging
+- **Limited resources**: Memory management and batch processing
 
 ## 📈 Performance
 
-### Optimisations
+### Optimizations
 
-- **Traitement par lots** : Configurable selon la mémoire disponible
-- **Gestion mémoire** : Monitoring et optimisation automatique
-- **Cache intelligent** : Réutilisation des calculs coûteux
-- **Logging efficace** : Rotation automatique des fichiers de log
+- **Batch processing**: Configurable based on available memory
+- **Memory management**: Automatic monitoring and optimization
+- **Smart caching**: Reuse of expensive computations
+- **Efficient logging**: Automatic log file rotation
 
 ### Benchmarks
 
-- **50 avis** : < 5 secondes
-- **500 avis** : < 30 secondes  
-- **5000 avis** : < 5 minutes
+- **50 reviews**: < 5 seconds
+- **500 reviews**: < 30 seconds
+- **5000 reviews**: < 5 minutes
+- **Memory usage**: ~340MB for ML models
 
-## 🤝 Contribution
+## 🤝 Contributing
 
-### Standards de code
+Contributions are welcome! Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on:
 
-- **Style** : PEP 8 avec Black
-- **Documentation** : Docstrings complètes
-- **Tests** : Couverture > 80% pour les nouvelles fonctionnalités
-- **Git** : Messages de commit descriptifs
+- Code style guidelines (PEP 8, Black, Flake8)
+- Testing requirements (80%+ coverage)
+- Pull request process
+- Development setup
 
-### Processus de contribution
+### Quick Contribution Guide
 
-1. Fork du projet
-2. Création d'une branche feature
-3. Développement avec tests
-4. Vérification qualité (Black + Flake8 + Tests)
-5. Pull request avec description détaillée
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Make your changes with tests
+4. Run quality checks (`black`, `flake8`, `pytest`)
+5. Submit a pull request
 
-## 📝 Changelog
+## 📝 Documentation
 
-### Version 1.0.0
-- Analyse de sentiment VADER avec optimisations françaises
-- Support complet des emojis et caractères spéciaux
-- Génération de rapports JSON et CSV
-- Interface en ligne de commande complète
-- Gestion d'erreurs robuste
-- Suite de tests complète (84 tests)
+- **[README.md](README.md)**: This file - Quick start and overview
+- **[CONTRIBUTING.md](CONTRIBUTING.md)**: Contribution guidelines
 
-## 📄 Licence
+## 📄 License
 
-Ce projet est développé dans le cadre d'un projet tutoré académique.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 🆘 Support
+## 🆘 Troubleshooting
 
-### Problèmes courants
+### Common Issues
 
-**Erreur d'encodage** :
+**Encoding errors**:
+
 ```bash
-# Vérifier l'encodage du fichier
+# Check file encoding
 file -i reviews.json
-# Le système gère automatiquement UTF-8, Latin-1, CP1252
+# System automatically handles UTF-8, Latin-1, CP1252
 ```
 
-**Mémoire insuffisante** :
-```bash
-# Réduire la taille des lots dans config.json
+**Out of memory**:
+
+```json
+// Reduce batch size in config.json
 {
   "processing": {
     "batch_size": 50
@@ -311,12 +371,27 @@ file -i reviews.json
 }
 ```
 
-**Résultats inattendus** :
+**Unexpected results**:
+
 ```bash
-# Mode verbeux pour diagnostic
+# Use verbose mode for diagnostics
 python main.py reviews.json --verbose
 ```
 
-### Contact
+## 🙏 Acknowledgments
 
-Pour toute question technique ou suggestion d'amélioration, consultez les logs détaillés générés par l'application ou utilisez le mode `--verbose` pour un diagnostic approfondi.
+- Built with [VADER Sentiment](https://github.com/cjhutto/vaderSentiment)
+- ML models from [HuggingFace Transformers](https://huggingface.co/transformers/)
+- BERT multilingual model: [nlptown/bert-base-multilingual-uncased-sentiment](https://huggingface.co/nlptown/bert-base-multilingual-uncased-sentiment)
+
+## 📧 Support
+
+For questions or issues:
+
+- Open an issue on GitHub
+- Check the documentation in `docs/`
+- Use `--verbose` mode for detailed diagnostics
+
+---
+
+**Made with ❤️ by mouwaficbdr**

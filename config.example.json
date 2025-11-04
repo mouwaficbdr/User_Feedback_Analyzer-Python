@@ -1,0 +1,29 @@
+{
+  "sentiment_thresholds": {
+    "positive": 0.28,
+    "negative": -0.28,
+    "comment": "Optimized thresholds for 91.07% accuracy with Hybrid analyzer. Adjust based on your use case: E-commerce: ±0.05 (balanced), Social media: ±0.1 (stricter), Customer support: ±0.03 (more sensitive)"
+  },
+  "output": {
+    "summary_format": "json",
+    "results_format": "csv",
+    "summary_filename": "summary",
+    "results_filename": "results",
+    "comment": "summary_format: 'json' or 'txt', results_format: 'csv'"
+  },
+  "logging": {
+    "level": "INFO",
+    "file": "sentiment_analysis.log",
+    "format": "%(asctime)s - %(name)s - %(levelname)s - %(message)s",
+    "comment": "level: DEBUG, INFO, WARNING, ERROR, CRITICAL"
+  },
+  "processing": {
+    "batch_size": 100,
+    "encoding_fallbacks": [
+      "utf-8",
+      "latin-1",
+      "cp1252"
+    ],
+    "comment": "batch_size: Number of reviews to process at once. Reduce if memory issues occur. encoding_fallbacks: Tried in order if primary encoding fails"
+  }
+}

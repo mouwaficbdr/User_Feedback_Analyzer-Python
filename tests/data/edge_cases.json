@@ -1,0 +1,242 @@
+[
+  {
+    "review_id": "EDGE001",
+    "review_text": "Bon",
+    "expected_sentiment": "Positive",
+    "description": "Very short positive review"
+  },
+  {
+    "review_id": "EDGE002",
+    "review_text": "Nul",
+    "expected_sentiment": "Negative",
+    "description": "Very short negative review"
+  },
+  {
+    "review_id": "EDGE003",
+    "review_text": "OK",
+    "expected_sentiment": "Neutral",
+    "description": "Very short neutral review"
+  },
+  {
+    "review_id": "EDGE004",
+    "review_text": "",
+    "expected_sentiment": "Neutral",
+    "description": "Empty review text"
+  },
+  {
+    "review_id": "EDGE005",
+    "review_text": "Ce produit est absolument incroyable, je n'ai jamais vu quelque chose d'aussi bien conçu et efficace dans toute ma vie, je le recommande à 100% sans aucune hésitation, vraiment c'est le meilleur achat que j'ai fait cette année et je suis sûr que je vais l'utiliser pendant très longtemps car la qualité est exceptionnelle et le service client est au top, bravo à toute l'équipe pour ce travail remarquable.",
+    "expected_sentiment": "Positive",
+    "description": "Very long positive review (500+ characters)"
+  },
+  {
+    "review_id": "EDGE006",
+    "review_text": "😀😀😀👍👍👍💯⭐⭐⭐⭐⭐",
+    "expected_sentiment": "Positive",
+    "description": "Only positive emojis"
+  },
+  {
+    "review_id": "EDGE007",
+    "review_text": "😭😭😭👎👎👎💔",
+    "expected_sentiment": "Negative",
+    "description": "Only negative emojis"
+  },
+  {
+    "review_id": "EDGE008",
+    "review_text": "SUPER GÉNIAL EXCELLENT PARFAIT !!!!!!",
+    "expected_sentiment": "Positive",
+    "description": "All caps with excessive punctuation"
+  },
+  {
+    "review_id": "EDGE009",
+    "review_text": "horrible catastrophique nul terrible",
+    "expected_sentiment": "Negative",
+    "description": "All lowercase negative words"
+  },
+  {
+    "review_id": "EDGE010",
+    "review_text": "C'est pas bon du tout",
+    "expected_sentiment": "Negative",
+    "description": "Negation - pas bon"
+  },
+  {
+    "review_id": "EDGE011",
+    "review_text": "Je ne suis pas satisfait",
+    "expected_sentiment": "Negative",
+    "description": "Negation - ne...pas"
+  },
+  {
+    "review_id": "EDGE012",
+    "review_text": "Pas mal mais pas top non plus",
+    "expected_sentiment": "Neutral",
+    "description": "Ambiguous with double negation"
+  },
+  {
+    "review_id": "EDGE013",
+    "review_text": "Bon produit mais cher",
+    "expected_sentiment": "Neutral",
+    "description": "Mixed sentiment - positive and negative"
+  },
+  {
+    "review_id": "EDGE014",
+    "review_text": "Qualité correcte mais service nul",
+    "expected_sentiment": "Neutral",
+    "description": "Mixed sentiment - balanced"
+  },
+  {
+    "review_id": "EDGE015",
+    "review_text": "tro bi1 jador !!!",
+    "expected_sentiment": "Positive",
+    "description": "SMS language - positive"
+  },
+  {
+    "review_id": "EDGE016",
+    "review_text": "tro nul jdéteste",
+    "expected_sentiment": "Negative",
+    "description": "SMS language - negative"
+  },
+  {
+    "review_id": "EDGE017",
+    "review_text": "Good product, very satisfied",
+    "expected_sentiment": "Positive",
+    "description": "English text - positive"
+  },
+  {
+    "review_id": "EDGE018",
+    "review_text": "Bad quality, disappointed",
+    "expected_sentiment": "Negative",
+    "description": "English text - negative"
+  },
+  {
+    "review_id": "EDGE019",
+    "review_text": "Bon produit but expensive",
+    "expected_sentiment": "Neutral",
+    "description": "Mixed French/English"
+  },
+  {
+    "review_id": "EDGE020",
+    "review_text": "!!!???...",
+    "expected_sentiment": "Neutral",
+    "description": "Only punctuation"
+  },
+  {
+    "review_id": "EDGE021",
+    "review_text": "123456789",
+    "expected_sentiment": "Neutral",
+    "description": "Only numbers"
+  },
+  {
+    "review_id": "EDGE022",
+    "review_text": "5/5",
+    "expected_sentiment": "Positive",
+    "description": "Rating format"
+  },
+  {
+    "review_id": "EDGE023",
+    "review_text": "1/5",
+    "expected_sentiment": "Negative",
+    "description": "Low rating format"
+  },
+  {
+    "review_id": "EDGE024",
+    "review_text": "@#$%^&*()",
+    "expected_sentiment": "Neutral",
+    "description": "Special characters only"
+  },
+  {
+    "review_id": "EDGE025",
+    "review_text": "Très très très très bon",
+    "expected_sentiment": "Positive",
+    "description": "Intensifier repetition"
+  },
+  {
+    "review_id": "EDGE026",
+    "review_text": "Vraiment vraiment mauvais",
+    "expected_sentiment": "Negative",
+    "description": "Negative intensifier repetition"
+  },
+  {
+    "review_id": "EDGE027",
+    "review_text": "Peut-être bon, peut-être pas",
+    "expected_sentiment": "Neutral",
+    "description": "Uncertain/hesitant"
+  },
+  {
+    "review_id": "EDGE028",
+    "review_text": "Je ne sais pas trop",
+    "expected_sentiment": "Neutral",
+    "description": "Indecisive"
+  },
+  {
+    "review_id": "EDGE029",
+    "review_text": "Produit reçu",
+    "expected_sentiment": "Neutral",
+    "description": "Factual statement only"
+  },
+  {
+    "review_id": "EDGE030",
+    "review_text": "Livraison rapide",
+    "expected_sentiment": "Positive",
+    "description": "Positive aspect only"
+  },
+  {
+    "review_id": "EDGE031",
+    "review_text": "Livraison lente",
+    "expected_sentiment": "Negative",
+    "description": "Negative aspect only"
+  },
+  {
+    "review_id": "EDGE032",
+    "review_text": "Bon bon bon bon bon",
+    "expected_sentiment": "Positive",
+    "description": "Word repetition - positive"
+  },
+  {
+    "review_id": "EDGE033",
+    "review_text": "Nul nul nul nul nul",
+    "expected_sentiment": "Negative",
+    "description": "Word repetition - negative"
+  },
+  {
+    "review_id": "EDGE034",
+    "review_text": "Excellent mais cher, rapide mais fragile, beau mais inutile",
+    "expected_sentiment": "Neutral",
+    "description": "Multiple contradictions"
+  },
+  {
+    "review_id": "EDGE035",
+    "review_text": "RAS",
+    "expected_sentiment": "Neutral",
+    "description": "Acronym - Rien À Signaler"
+  },
+  {
+    "review_id": "EDGE036",
+    "review_text": "10/10 recommande",
+    "expected_sentiment": "Positive",
+    "description": "Perfect rating with recommendation"
+  },
+  {
+    "review_id": "EDGE037",
+    "review_text": "0/10 à éviter",
+    "expected_sentiment": "Negative",
+    "description": "Worst rating with warning"
+  },
+  {
+    "review_id": "EDGE038",
+    "review_text": "Bof",
+    "expected_sentiment": "Neutral",
+    "description": "Colloquial neutral expression"
+  },
+  {
+    "review_id": "EDGE039",
+    "review_text": "Mouais",
+    "expected_sentiment": "Neutral",
+    "description": "Colloquial hesitant expression"
+  },
+  {
+    "review_id": "EDGE040",
+    "review_text": "Waouh !",
+    "expected_sentiment": "Positive",
+    "description": "Exclamation of amazement"
+  }
+]

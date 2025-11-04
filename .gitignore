@@ -1,3 +1,6 @@
+# Editor
+./kiro
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -236,6 +239,17 @@ sentiment_analysis.log
 # Test output directory
 test_output/
 
+# Validation and optimization results
+validation_*_results/
+optimization_*_results/
+*_optimization_log.txt
+*_optimization_results.json
+neutral_opt_temp/
+
+# Ad-hoc scripts (keep only production-ready scripts)
+quick_*.py
+optimize_for_*.py
+
 # Temporary files
 *.tmp
 *.bak
@@ -248,6 +262,9 @@ test_output/
 # Configuration overrides (uncomment if you have local config files)
 # config.local.json
 # .env.local
+
+# User-specific configuration (use config.example.json as template)
+config.json
 
 # Jupyter notebooks (uncomment if you don't want to track notebooks)
 # *.ipynb
