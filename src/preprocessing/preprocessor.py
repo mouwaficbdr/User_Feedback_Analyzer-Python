@@ -326,7 +326,8 @@ class ReviewPreprocessor:
             Text with normalized punctuation
         """
         # Normalize multiple punctuation marks
-        text = self.punctuation_pattern.sub(lambda m: m.group()[-1], text)
+        # text = self.punctuation_pattern.sub(lambda m: m.group()[-1], text)  # Disabled to preserve intensity
+
 
         # Add spaces around punctuation for better tokenization
         text = re.sub(r"([.!?])", r" \1 ", text)
