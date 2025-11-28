@@ -207,14 +207,14 @@ BOOSTERS = {
     "moins": 0.5,
 }
 
-# Idioms (multi-word expressions with specific sentiment)
+# Expressions/idiomes
 IDIOMS = {
     "ne marche pas": -2.0,
     "ne fonctionne pas": -2.0,
-    "pas mal": 1.5,  # Positive in French!
+    "pas mal": 1.5,
     "pas terrible": -1.5,
-    "pas du tout": -0.5, # Intensifier for negation
-    "rien à dire": 1.0, # Usually positive "nothing to complain about"
+    "pas du tout": -0.5,
+    "rien à dire": 1.0,
     "rien a dire": 1.0,
     "top du top": 3.0,
     "hors de prix": -2.5,
@@ -234,7 +234,7 @@ IDIOMS = {
     "mauvaise surprise": -2.5,
 }
 
-# Add missing words to main lexicon
+# Quelques mots niches rajoutés suite à des tests sur d'autres corpus d'avis client
 FRENCH_LEXICON.update({
     "star": 1.0,
     "stars": 1.0,
@@ -251,7 +251,7 @@ FRENCH_LEXICON.update({
     "affaire": 0.5,
     "endommagé": -2.0,
     "dommage": -1.5,
-    # Restaurant / Food
+    # Restauration
     "délicieux": 2.5,
     "régal": 2.5,
     "bruyante": -1.5,
@@ -264,7 +264,7 @@ FRENCH_LEXICON.update({
     "frais": 1.5,
     "brûlée": -2.0,
     "brûlé": -2.0,
-    "cuite": 0.5, # Context dependent, but usually "pas cuite" handled by negation
+    "cuite": 0.5,
     "douteuse": -2.0,
     "douteux": -2.0,
     "varié": 1.5,
@@ -273,13 +273,13 @@ FRENCH_LEXICON.update({
     "impeccable": 2.5,
     "décevante": -2.0,
     "décevant": -2.0,
-    # Fashion / Retail
+    # Mode et Vêtements
     "magnifique": 2.5,
     "confortable": 2.0,
     "gratte": -1.5,
-    "transparent": -1.0, # Negative in context of clothing quality usually
-    "petit": -1.0, # Often negative for sizing
-    "grand": -1.0, # Often negative for sizing
+    "transparent": -1.0,
+    "petit": -1.0,
+    "grand": -1.0,
     "trou": -2.5,
     "inacceptable": -2.5,
     "erroné": -1.5,
@@ -291,7 +291,7 @@ FRENCH_LEXICON.update({
     "agréable": 2.0,
     "respirante": 1.5,
     "bizarre": -1.0,
-    "mal": -1.5, # "mal aux pieds"
+    "mal": -1.5,
     "bâclée": -2.0,
     "bâclées": -2.0,
     "maintien": 1.5,

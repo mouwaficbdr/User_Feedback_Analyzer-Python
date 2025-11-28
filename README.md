@@ -61,7 +61,7 @@ python main.py mes_avis.json --output-dir ./resultats
 python main.py avis.json --config config.json
 ```
 
-## 📊 Formats de Sortie
+## Output
 
 ### 1. Rapport Récapitulatif (`summary.json`)
 Fournit une vue d'ensemble de l'analyse (positifs, negatifs, neutres).
@@ -115,7 +115,7 @@ UserFeedbackAnalyzer-Python/
 └── main.py                # Point d'entrée CLI
 ```
 
-## 🧪 Tests
+## Tests
 
 ```bash
 # Exécuter tous les tests
