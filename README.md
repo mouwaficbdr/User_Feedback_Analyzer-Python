@@ -15,7 +15,7 @@ Il est conçu pour être **prêt pour la production** , en gros: robuste, rapide
 
 ## Fonctionnalités Clés
 
-- **Analyseur Français Intelligent** : Lexique intégré complet (~1000+ mots) spécifiquement ajusté pour les retours clients.
+- **Analyseur Français Intelligent** : Lexique intégré complet (~200+ mots) spécifiquement ajusté pour les retours clients.
 - **Intelligence Linguistique** :
   - **Gestion de la négation** : Interprète correctement "ce n'est pas bon" vs "c'est bon".
   - **Intensificateurs** : Distingue "bon" de "vraiment très bon".
@@ -93,9 +93,9 @@ REV002,"Service décevant",Negative,-0.7269,
 La logique de classification repose sur un score adopté, entre **-1.0** (Négatif) et **+1.0** (Positif).
 
 ### Seuils par Défaut
-- **Positif** : Score > **0.05**
-- **Négatif** : Score < **-0.05**
-- **Neutre** : Entre -0.05 et 0.05
+- **Positif** : Score > **0.1**
+- **Négatif** : Score < **-0.1**
+- **Neutre** : Entre -0.1 et 0.1
 
 **Justification** : Ces seuils sont choisis pour être légèrement inclusifs pour la neutralité. Dans les avis clients, un commentaire légèrement positif ("c'est ok") est souvent juste de la neutralité polie. Un petit tampon autour de 0.0 garantit que seul le texte vraiment avec une opinion est classé comme Positif ou Négatif.
 

@@ -75,7 +75,21 @@ FRENCH_LEXICON = {
     "réactif": 2.0,
     "compétent": 2.0,
     "sérieux": 2.0,
+    "sérieux": 2.0,
     "confiance": 2.0,
+    "élégant": 2.5,
+    "moderne": 2.0,
+    "design": 1.5,
+    "facile": 2.0,
+    "simple": 1.5,
+    "meilleur": 3.0,
+    "réponse": 1.0,
+    "répondu": 1.0,
+    "fonctionne": 1.5,
+    "fonctionner": 1.5,
+    "marche": 1.5,
+    "marcher": 1.5,
+    "potentiel": 1.0,
 
     # NEGATIVE (-1.0 to -4.0)
     "horrible": -3.5,
@@ -154,6 +168,16 @@ FRENCH_LEXICON = {
     "déconseille": -2.5,
     "fuir": -3.0,
     "évitez": -2.5,
+    "confus": -2.0,
+    "confuse": -2.0,
+    "confuses": -2.0,
+    "lourd": -1.0,
+    "bugs": -2.0,
+    "buggé": -2.5,
+    "retourner": -1.0,
+    "retour": -1.0,
+    "renvoyer": -1.5,
+    "médiocre": -2.5,
 }
 
 # Negation words (invert sentiment)
@@ -232,6 +256,15 @@ IDIOMS = {
     "mauvaise affaire": -2.5,
     "belle surprise": 2.5,
     "mauvaise surprise": -2.5,
+    "ne est pas au rendez-vous": -2.5,
+    "pas au rendez-vous": -2.5,
+    "au rendez-vous": 2.0,
+    "rien de extraordinaire": -0.5,
+    "rien d'extraordinaire": -0.5,
+    "juste ok": 0.5,
+    "hésite à le retourner": -1.0,
+    "jamais répondu": -2.5,
+    "ne a jamais répondu": -2.5,
 }
 
 # Quelques mots niches rajoutés suite à des tests sur d'autres corpus d'avis client
